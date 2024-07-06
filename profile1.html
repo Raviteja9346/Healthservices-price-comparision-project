@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file for styling -->
+</head>
+<body>
+    <div class="container">
+        <h1>User Profile</h1>
+        
+        <div class="profile">
+            <div class="personal-info">
+                <h2>Personal Information</h2>
+                <p><strong>Name:</strong> <span id="fullNameText">John Doe</span> <input type="text" id="fullNameInput" style="display: none;"></p>
+                <p><strong>Email:</strong> <span id="emailText">johndoe@example.com</span> <input type="email" id="emailInput" style="display: none;"></p>
+                <p><strong>Date of Birth:</strong> <span id="dobText">1990-01-01</span> <input type="date" id="dobInput" style="display: none;"></p>
+                <p><strong>Phone Number:</strong> <span id="phoneText">+1234567890</span> <input type="text" id="phoneInput" style="display: none;"></p>
+                <p><strong>Address:</strong> <span id="addressText">123 Main St, City, Country</span> <input type="text" id="addressInput" style="display: none;"></p>
+                <p><strong>Age:</strong> <span id="ageText">34</span> <input type="number" id="ageInput" style="display: none;"></p>
+                <button onclick="toggleEdit()">Edit</button>
+                <button onclick="saveChanges()">Save Changes</button>
+            </div>
+            
+            <div class="medical-records">
+                <h2>Medical Records</h2>
+                <textarea id="medicalRecords" rows="10" cols="50">Patient has no known medical conditions.</textarea>
+                <br>
+                <button onclick="editMedicalRecords()">Edit Medical Records</button>
+                <button onclick="deleteMedicalRecords()">Delete Medical Records</button>
+                <form id="uploadForm" enctype="multipart/form-data" method="post" action="upload.php">
+                    <input type="file" name="fileToUpload" id="fileToUpload">
+                    <input type="submit" value="Upload File" name="submit">
+                </form>
+            </div>
+        </div>
+        
+        <script >
+            // profile.js
+
+function toggleEdit() {
+    const fields = ['fullName', 'email', 'dob', 'phone', 'address', 'age'];
+
+    fields.forEach(field => {
+        const textElement = document.getElementById(`${field}Text`);
+        const inputElement = document.getElementById(`${field}Input`);
+
+        if (textElement && inputElement) {
+            textElement.style.display = 'none';
+            inputElement.style.display = 'inline-block';
+            inputElement.value = textElement.textContent.trim();
+        }
+    });
+
+    document.querySelector('button:nth-of-type(1)').style.display = 'none';
+    document.querySelector('button:nth-of-type(2)').style.display = 'inline-block';
+}
+
+function saveChanges() {
+    const fields = ['fullName', 'email', 'dob', 'phone', 'address', 'age'];
+
+    fields.forEach(field => {
+        const textElement = document.getElementById(`${field}Text`);
+        const inputElement = document.getElementById(`${field}Input`);
+
+        if (textElement && inputElement) {
+            textElement.textContent = inputElement.value.trim();
+            textElement.style.display = 'inline-block';
+            inputElement.style.display = 'none';
+        }
+    });
+
+    document.querySelector('button:nth-of-type(1)').style.display = 'inline-block';
+    document.querySelector('button:nth-of-type(2)').style.display = 'none';
+}
+
+function editMedicalRecords() {
+    let newRecords = prompt("Enter new medical records:");
+    if (newRecords !== null && newRecords !== "") {
+        document.getElementById('medicalRecords').textContent = newRecords;
+    }
+}
+
+function deleteMedicalRecords() {
+    if (confirm("Are you sure you want to delete medical records?")) {
+        document.getElementById('medicalRecords').textContent = "";
+    }
+}
+
+        </script> 
+        <script>
+            document.getElementById('uploadForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+    
+    // Get file input element
+    const fileInput = document.getElementById('fileToUpload');
+    
+    // Check if a file is selected
+    if (fileInput.files.length === 0) {
+        alert("Please select a file to upload.");
+        return;
+    }
+    
+    // Get the selected file
+    const file = fileInput.files[0];
+    
+    // Create FormData object to construct the POST data
+    const formData = new FormData();
+    formData.append('fileToUpload', file);
+    
+    // Send AJAX request to upload.php (adjust URL and method as needed)
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'upload.php', true);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            // Handle successful upload
+            alert('File uploaded successfully!');
+            // Optionally, update UI or perform other actions upon successful upload
+        } else {
+            // Handle upload error
+            alert('File upload failed. Please try again.');
+        }
+    };
+    xhr.onerror = function() {
+        // Handle network error
+        alert('Network error occurred. Please check your connection and try again.');
+    };
+    xhr.send(formData);
+});
+        </script>
+    </div>
+</body>
+</html>
+
+
+        <script src="profile.js"></script> <!-- Link to your JavaScript file -->
+    </div>
+</body>
+</html>
+
+<style>
+    /* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.profile {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.profile h1 {
+    text-align: center;
+}
+
+.personal-info, .medical-records {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.personal-info h2, .medical-records h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.medical-records textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+input[type="file"] {
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .profile {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+<script>
+    // profile.js
+
+const profileData = {
+    fullName: "John Doe",
+    email: "johndoe@example.com",
+    dob: "1990-01-01",
+    phone: "+1234567890",
+    address: "123 Main St, City, Country",
+    age: 34,
+    medicalRecords: "Patient has no known medical conditions."
+};
+
+function populateProfile() {
+    document.getElementById('fullName').textContent = profileData.fullName;
+    document.getElementById('email').textContent = profileData.email;
+    document.getElementById('dob').textContent = profileData.dob;
+    document.getElementById('phone').textContent = profileData.phone;
+    document.getElementById('address').textContent = profileData.address;
+    document.getElementById('age').textContent = profileData.age;
+    document.getElementById('medicalRecords').textContent = profileData.medicalRecords;
+}
+
+function editMedicalRecords() {
+    let newRecords = prompt("Enter new medical records:");
+    if (newRecords !== null && newRecords !== "") {
+        profileData.medicalRecords = newRecords;
+        document.getElementById('medicalRecords').textContent = newRecords;
+    }
+}
+
+function deleteMedicalRecords() {
+    if (confirm("Are you sure you want to delete medical records?")) {
+        profileData.medicalRecords = "";
+        document.getElementById('medicalRecords').textContent = "";
+    }
+}
+
+window.onload = populateProfile;
+
+</script>

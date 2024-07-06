@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Lab Test Details</title>
+</head>
+<body>
+    <h2>Upload Lab Test Details</h2>
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+        <label for="test_details">Lab Test Details:</label>
+        <input type="file" name="test_details" id="test_details" accept=".pdf"><br><br>
+        
+        <label for="test_results">Lab Test Results:</label>
+        <input type="file" name="test_results" id="test_results" accept=".pdf"><br><br>
+        
+        <input type="submit" value="Upload">
+    </form>
+</body>
+</html>

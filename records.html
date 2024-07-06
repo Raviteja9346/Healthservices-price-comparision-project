@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload New Records</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Upload New Records</h1>
+        
+        <form action="records.php" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="record_type">Record Type:</label>
+                <input type="text" id="record_type" name="record_type" required>
+            </div>
+            <div class="form-group">
+                <label for="record_file">Select File:</label>
+                <input type="file" id="record_file" name="record_file" accept=".pdf,.doc,.docx,.txt" required>
+            </div>
+            <button type="submit">Upload Record</button>
+        </form>
+        
+        <div class="back-link">
+            <a href="profile.php">&larr; Back to Profile</a>
+        </div>
+    </div>
+
+    <style>
+        /* Styles can be added here or in an external stylesheet */
+        /* Ensure styles.css is linked appropriately */
+    </style>
+</body>
+</html>

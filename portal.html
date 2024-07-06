@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Health Records</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>User Profile - Health Records</h1>
+        
+        <div class="profile-info">
+            <h2>User Information</h2>
+            <p><strong>Name:</strong> John Doe</p>
+            <p><strong>Email:</strong> john.doe@example.com</p>
+            <p><strong>Phone:</strong> +1234567890</p>
+            <p><strong>Address:</strong> 123 Main St, City, Country</p>
+            <!-- Add more fields as needed -->
+        </div>
+
+        <div class="health-records">
+            <h2>Health Records</h2>
+            <ul>
+                <li>Blood Test Results - <a href="blood_test.pdf" target="_blank">View</a></li>
+                <li>X-ray Report - <a href="xray_report.pdf" target="_blank">View</a></li>
+                <!-- Add more health records with appropriate links -->
+            </ul>
+        </div>
+
+        <div class="actions">
+            <h2>Actions</h2>
+            <button onclick="editProfile()">Edit Profile</button>
+            <button onclick="uploadRecords()">Upload New Records</button>
+            <button onclick="shareRecords()">Share Records</button>
+        </div>
+
+        <div class="logout">
+            <a href="logout.php">Logout</a>
+        </div>
+    </div>
+
+    <script>
+    function editProfile() {
+        // Redirect or load a new page for profile editing
+        window.location.href = 'edit_profile.html';
+    }
+    
+    function uploadRecords() {
+        // Redirect or load a new page for uploading records
+        window.location.href = 'upload_records.html';
+    }
+    
+    function shareRecords() {
+        // Redirect or load a new page for sharing records
+        window.location.href = 'share_records.html';
+    }
+</script>    
+</body>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.profile-info, .health-records, .actions, .logout {
+    margin-bottom: 30px;
+}
+
+.actions button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.actions button:hover {
+    background-color: #0056b3;
+}
+
+.logout {
+    text-align: center;
+}
+
+.logout a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.logout a:hover {
+    text-decoration: underline;
+}
+
+</style>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Reviews</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        form {
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-group input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .form-group input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+       
+    /* Body and container styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 800px; /* Adjust max-width as needed */
+        margin: 0 auto;
+    }
+
+    /* Review styles */
+    .review {
+        margin-bottom: 15px;
+        background-color: #fff;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        overflow: hidden; /* Clearfix for floated elements */
+        transition: transform 0.3s ease-out; /* Add smooth transition */
+    }
+
+    .review p {
+        margin: 5px 0;
+    }
+
+    /* Hover effect (optional) */
+    .review:hover {
+        transform: translateY(-5px); /* Move review upwards on hover */
+    }
+
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Check Reviews</h2>
+    <form action="check.php" method="GET">
+        <div class="form-group">
+            <label for="id">Enter Doctor ID:</label>
+            <input type="text" id="id" name="id" placeholder="Enter Doctor ID" required>
+        </div>
+        
+        <div class="form-group">
+            <input type="submit" value="Check Reviews">
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
